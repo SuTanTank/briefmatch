@@ -51,7 +51,7 @@
 #include <curand_kernel.h>
 
 #define BLOCK_X 32
-#define BLOCK_Y 32
+#define BLOCK_Y 16
 
 #define MAX_MEDIAN 47
 
