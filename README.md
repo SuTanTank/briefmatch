@@ -91,13 +91,13 @@ Following are three examples of different quality/speed trade-offs, that use
 the RubberWhale sequence from the [Middlebury benchmark training data](http://vision.middlebury.edu/flow/data/):
 
 * Faster (lower quality):
-  `./briefmatch --input data/RubberWhale/frame%02d.png --frames 7:14 --output output/flow%02d.png --up-sampling-x 1.5 --up-sampling-y 1.5 --feature_length 32`
+  `./briefmatch --input data/RubberWhale/frame%02d.png --frames 7:14 --output output/flow%02d.png --up-sampling-x 1.5 --up-sampling-y 1.5 --feature-length 32`
 
 * Moderate (medium quality):
-  `./briefmatch --input data/RubberWhale/frame%02d.png --frames 7:14 --output output/flow%02d.png --up-sampling-x 2.9 --up-sampling-y 2.9 --feature_length 128`
+  `./briefmatch --input data/RubberWhale/frame%02d.png --frames 7:14 --output output/flow%02d.png --up-sampling-x 2.9 --up-sampling-y 2.9 --feature-length 128`
 
 * Slower (higher quality):
-  `./briefmatch --input data/RubberWhale/frame%02d.png --frames 7:14 --output output/flow%02d.png --up-sampling-x 4.9 --up-sampling-y 4.9 --feature_length 512`
+  `./briefmatch --input data/RubberWhale/frame%02d.png --frames 7:14 --output output/flow%02d.png --up-sampling-x 4.9 --up-sampling-y 4.9 --feature-length 512`
 
 ## Included libraries
 

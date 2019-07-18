@@ -120,7 +120,9 @@ else  (USE_OPENCV)
 endif ()
 
 target_compile_definitions(briefmatch PUBLIC _USE_MATH_DEFINES)
-
+if (ADVANCED_OPTIONS)
+target_compile_definitions(briefmatch PUBLIC ADVANCED_OPTIONS)
+endif()
 
 # === Config ===================================================================
 configure_file(

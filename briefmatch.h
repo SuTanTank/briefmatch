@@ -52,8 +52,9 @@
 #include "imageLib.h"
 
 //#include "VclExr.h"
+#ifdef USE_OPENCV
 #include <opencv2/opencv.hpp>
-
+#endif	
 #include <cstdio>
 #include <math.h>
 #include <iostream>
