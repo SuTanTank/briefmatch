@@ -10,7 +10,7 @@
 // SEE ALSO
 //  ImageIO.cpp
 //
-// Copyright © Richard Szeliski and Daniel Scharstein, 2005.
+// Copyright ?Richard Szeliski and Daniel Scharstein, 2005.
 // See Copyright.h for more details
 //
 ///////////////////////////////////////////////////////////////////////////

@@ -37,9 +37,10 @@
  */
 
 #include <iostream>
-
+//#ifdef WIN32
+//#include <windows.h>
+//#endif
 #include "of_pipeline.h"
-
 
 int main(int argc, char *argv[])
 {   
