@@ -158,7 +158,7 @@ bool OFPipeline::setParams(int argc, char* argv[])
     sprintf(str, m_input.c_str(), m_frame);
 
 #ifdef USE_OPENCV
-    cv::Mat I = cv::imread(str, CV_LOAD_IMAGE_GRAYSCALE); //COLOR);
+    cv::Mat I = cv::imread(str, cv::IMREAD_GRAYSCALE); //COLOR);
     if(!I.data )
         throw ParserException(std::string("Input image '" + std::string(str) + "' not found.").c_str());
     m_sx_in = I.cols; m_sy_in = I.rows;
@@ -266,7 +266,7 @@ bool OFPipeline::processFrame()
     // Read from disc
     m_timer->start();
 #ifdef USE_OPENCV
-    cv::Mat I = cv::imread(str, CV_LOAD_IMAGE_GRAYSCALE);
+    cv::Mat I = cv::imread(str, cv::IMREAD_GRAYSCALE);
     if(!I.data )
         throw BriefMatchException(std::string("Input image '" + std::string(str) + "' not found.").c_str());
     I.convertTo(I, CV_32FC1);

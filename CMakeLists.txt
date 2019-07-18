@@ -1,8 +1,8 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.10)
 project (BriefMatch)
 
 option(ADVANCED_OPTIONS
-  "Include advanced options" 0)
+  "Include advanced options" 1)
 
 option(USE_OPENCV
   "Use OpenCV for a more flexible and faster image input" 1)
@@ -25,7 +25,7 @@ if (USE_OPENCV)
 endif ()
 
 # === Add imageLib library ===================================================
-add_library(image_lib SHARED
+add_library(image_lib STATIC
     ${PROJECT_SOURCE_DIR}/util/imageLib/Convert.cpp
     ${PROJECT_SOURCE_DIR}/util/imageLib/Image.cpp
     ${PROJECT_SOURCE_DIR}/util/imageLib/ImageIO.cpp
@@ -43,7 +43,7 @@ if( NOT CUDA_FOUND )
 else( NOT CUDA_FOUND )
     message( "\tCuda version: ${CUDA_VERSION}" )
     message( "\tinclude: ${CUDA_INCLUDE_DIRS}\n\tlibs: ${CUDA_LIBRARIES}" )
-
+    enable_language(CUDA)
     # NVCC options
     set(CUDA_PROPAGATE_HOST_FLAGS OFF)
     if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
@@ -90,19 +90,27 @@ if (USE_OPENCV)
     include_directories(
         "${OpenCV_INCLUDE_DIRS}"
     )
+    add_compile_definitions(USE_OPENCV)
 endif ()
 
 target_link_libraries(image_lib ${PNG_LIBRARIES})
 
-cuda_add_executable(briefmatch 
+add_executable(briefmatch 
     ${PROJECT_SOURCE_DIR}/main.cpp
     ${PROJECT_SOURCE_DIR}/of_pipeline.cpp
+    ${PROJECT_SOURCE_DIR}/of_pipeline.h
     ${PROJECT_SOURCE_DIR}/briefmatch.cpp
+    ${PROJECT_SOURCE_DIR}/briefmatch.h
     ${PROJECT_SOURCE_DIR}/kernels/briefmatch_cuda.cu
+    ${PROJECT_SOURCE_DIR}/kernels/briefmatch_cuda.h
     ${PROJECT_SOURCE_DIR}/kernels/util_cuda.cu
+    ${PROJECT_SOURCE_DIR}/kernels/util_cuda.h
     ${PROJECT_SOURCE_DIR}/util/arg_parser.cpp
+    ${PROJECT_SOURCE_DIR}/util/arg_parser.h
     ${PROJECT_SOURCE_DIR}/util/colorcode.cpp
+    ${PROJECT_SOURCE_DIR}/util/colorcode.h
     ${PROJECT_SOURCE_DIR}/util/flowIO.cpp
+    ${PROJECT_SOURCE_DIR}/util/flowIO.h
 )
 
 if (USE_OPENCV)
@@ -110,6 +118,8 @@ if (USE_OPENCV)
 else  (USE_OPENCV)
     target_link_libraries(briefmatch image_lib ${CUDA_LIBRARIES} ${PNG_LIBRARIES})
 endif ()
+
+target_compile_definitions(briefmatch PUBLIC _USE_MATH_DEFINES)
 
 
 # === Config ===================================================================

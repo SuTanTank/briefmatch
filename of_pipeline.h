@@ -49,7 +49,9 @@
 
 #ifndef OF_PIPELINE_H
 #define OF_PIPELINE_H
-
+#ifdef WIN32
+#include <Windows.h>
+#endif
 #include <fstream>
 
 #include "cuda.h"

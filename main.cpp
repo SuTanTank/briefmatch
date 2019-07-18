@@ -35,12 +35,8 @@
  *
  * \date Jul 2017
  */
-
-#include <iostream>
-//#ifdef WIN32
-//#include <windows.h>
-//#endif
 #include "of_pipeline.h"
+#include <iostream>
 
 int main(int argc, char *argv[])
 {   
