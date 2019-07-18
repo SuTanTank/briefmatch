@@ -18,7 +18,7 @@
 //  ImageIO.h            longer description
 //  ImageIOpng.cpp       png reader/writer
 //
-// Copyright © Richard Szeliski and Daniel Scharstein, 2001.
+// Copyright ?Richard Szeliski and Daniel Scharstein, 2001.
 // See Copyright.h for more details
 //
 ///////////////////////////////////////////////////////////////////////////

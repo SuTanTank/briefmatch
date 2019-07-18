@@ -35,11 +35,8 @@
  *
  * \date Jul 2017
  */
-
-#include <iostream>
-
 #include "of_pipeline.h"
-
+#include <iostream>
 
 int main(int argc, char *argv[])
 {   
